@@ -28,13 +28,6 @@ ifneq ("$(shell pkg-config --atleast-version=221 systemd && echo yes)", "yes")
 $(error systemd minimum required version 221.)
 endif
 
-ifneq ("$(DISABLE_FRAME_CAPTURES)","1")
-$(info Frames capturing support enabled.)
-else
-CFLAGS+=-DDISABLE_FRAME_CAPTURES
-$(info Frames capturing support disabled.)
-endif
-
 ifneq ("$(DISABLE_GAMMA)","1")
 GAMMA=$(shell pkg-config --silence-errors --libs x11 xrandr)
 ifneq ("$(GAMMA)","")
